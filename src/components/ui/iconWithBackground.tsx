@@ -26,7 +26,7 @@ const IconWithBackground: React.FC<IconWithBackgroundProps> = ({
       {/* notification badge */}
       {notificationCount > 0 && (
         <div
-          className='absolute -top-3 -right-3 flex items-center justify-center rounded-full w-[32px] h-[32px] p-[2px] border-[2px]'
+          className='absolute -top-3 -right-3 flex items-center justify-center rounded-full w-[32px] h-[32px] p-[2px]'
           style={{ backgroundColor: bgColor }}
         >
           <span
