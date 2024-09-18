@@ -1,13 +1,5 @@
 import React from "react";
-import { IconType } from "react-icons";
-
-interface IconWithBackgroundProps {
-  Icon: IconType;
-  bgColor: string;
-  size?: number;
-  notificationCount?: number;
-  iconColor?: string;
-}
+import { IconWithBackgroundProps } from "@/types";
 
 const IconWithBackground: React.FC<IconWithBackgroundProps> = ({
   Icon,
