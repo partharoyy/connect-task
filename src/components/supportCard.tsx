@@ -16,7 +16,6 @@ const SupportCard: React.FC<CardProps> = ({ id, name, avatarUrl, tags, title, de
     <div className='w-full rounded-xl bg-white shadow-[0px_18px_40px_0px_#7090B01F]'>
       <div className='p-5'>
         <div className='flex items-center space-x-4 mb-4'>
-          {/* Image Container */}
           <div className='w-12 h-12 flex-shrink-0'>
             <img
               src={avatarUrl}
@@ -44,9 +43,8 @@ const SupportCard: React.FC<CardProps> = ({ id, name, avatarUrl, tags, title, de
             ))}
           </div>
         </div>
-        {title && <h2 className='text-[14px] text-[#2B3674] font-medium mb-1'>{title}</h2>} {/* Removed truncate */}
+        {title && <h2 className='text-[14px] text-[#2B3674] font-medium mb-1'>{title}</h2>}
         {description && <p className='text-[#72768B] font-normal text-[12px] mb-4'>{description}</p>}{" "}
-        {/* Removed truncate */}
         {status && (
           <div className={`flex items-center ${statusType === "pending" ? "justify-between" : ""}`}>
             <span

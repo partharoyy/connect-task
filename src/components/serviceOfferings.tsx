@@ -14,43 +14,40 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, ArcElement, Title, Tooltip, Legend);
 
-// TypeScript type for legend items
 interface LegendItem {
   label: string;
   color: string;
 }
 
-// Donut Chart Data
 const donutData = {
   labels: ["Number of active services", "New services added", "Services removed"],
   datasets: [
     {
-      data: [60, 30, 10], // Example values
+      data: [60, 30, 10],
       backgroundColor: ["#3FE900", "#FFE603", "#FF0000"],
       hoverOffset: 4,
     },
   ],
 };
 
-// Line Graph Data with two smooth lines, now with point markers
 const lineData = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], // Month labels
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
   datasets: [
     {
       label: "Service Trend 1",
-      data: [10, 22, 30, 40, 20, 50, 30, 20, 40, 70, 60, 80], // Example values for 12 months
+      data: [10, 22, 30, 40, 20, 50, 30, 20, 40, 70, 60, 80],
       borderColor: "#FFE603",
       fill: false,
-      tension: 0.4, // Smooth lines
-      pointRadius: 0, // Set data point markers
+      tension: 0.4,
+      pointRadius: 0,
     },
     {
       label: "Service Trend 2",
-      data: [20, 40, 50, 60, 30, 20, 30, 40, 50, 70, 60, 100], // Example values for 12 months
+      data: [20, 40, 50, 60, 30, 20, 30, 40, 50, 70, 60, 100],
       borderColor: "#3FE900",
       fill: false,
-      tension: 0.4, // Smooth lines
-      pointRadius: 0, // Set data point markers
+      tension: 0.4,
+      pointRadius: 0,
     },
   ],
 };
@@ -65,25 +62,27 @@ const legends: LegendItem[] = [
 const lineOptions: ChartOptions<"line"> = {
   scales: {
     x: {
-      type: "category", // Ensure x-axis type is category
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], // Ensure labels are set
+      type: "category",
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
       grid: {
-        display: false, // No grid lines on x-axis
+        display: false,
       },
       ticks: {
-        autoSkip: false, // Prevent auto-skipping of ticks
+        autoSkip: false,
+        //@ts-expect-error: task project
         beginAtZero: false,
       },
       offset: true,
     },
     y: {
       grid: {
-        display: false, // No grid lines on y-axis
+        display: false,
       },
       ticks: {
         callback: function (value: number | string, index: number) {
-          return index % 1 === 0 ? value : ""; // Show markers for every axis point
+          return index % 1 === 0 ? value : "";
         },
+        //@ts-expect-error: task project
         beginAtZero: false,
       },
       offset: true,
@@ -91,7 +90,7 @@ const lineOptions: ChartOptions<"line"> = {
   },
   plugins: {
     legend: {
-      display: false, // Hide the legend for the line chart
+      display: false,
     },
   },
 };
@@ -101,24 +100,19 @@ export default function ServiceOfferings() {
     <div className='p-6 mt-4 rounded-xl bg-white '>
       <p className='text-[#0D0D0D] text-[20px] font-bold mb-4'>Service offerings</p>
       <div className='flex flex-wrap md:flex-nowrap justify-between items-start h-[400px]'>
-        {/* Donut Chart - 30% width */}
         <div className='w-full md:w-[30%] p-4'>
           <Doughnut data={donutData} options={{ plugins: { legend: { display: false } } }} />
         </div>
 
-        {/* Line Graph - 70% width */}
         <div className='w-full p-2 h-[400px]'>
           {" "}
-          {/* Set a fixed height for the parent */}
           <div className='w-full h-full'>
             {" "}
-            {/* Ensure the child takes full width and height */}
             <Line data={lineData} options={lineOptions} />
           </div>
         </div>
       </div>
 
-      {/* Common Legend Below Both Charts */}
       <div className='flex flex-wrap gap-4 mt-4'>
         {legends.map((legend, index) => (
           <div key={index} className='flex items-center space-x-2 w-full sm:w-auto'>

@@ -20,7 +20,6 @@ const TopNavigation = () => {
         />
       </div>
 
-      {/* Right Side Icons */}
       <div className='flex items-center space-x-9'>
         <IconWithBackground Icon={FaRegBell} bgColor='#E6E6FA' iconColor='#000435' notificationCount={21} />
 
@@ -28,10 +27,8 @@ const TopNavigation = () => {
 
         <IconWithBackground Icon={FiSettings} bgColor='#FFE7E1' iconColor='#FF5B5B' notificationCount={19} />
 
-        {/* Grey Separator */}
         <div className='h-20 bg-gray-200 w-px'></div>
 
-        {/* User Profile */}
         <div className='flex items-center space-x-3 cursor-pointer justify-center'>
           <img src={profileImage} alt='profile image' className='h-10 w-10 rounded-full object-cover' />
 

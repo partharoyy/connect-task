@@ -1,7 +1,6 @@
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import INDIA_TOPO_JSON from "../../public/data/india_states.json";
 
-// Mapping between state names and sector colors (in lowercase, no spaces)
 const stateToSectorColorMap: Record<string, string> = {
   andhrapradesh: "#FF847C",
   arunachalpradesh: "#165DC9",
@@ -12,8 +11,8 @@ const stateToSectorColorMap: Record<string, string> = {
   gujarat: "#165DC9",
   haryana: "#FF847C",
   himachalpradesh: "#43E7C9",
-  jammu: "#FF847C", // Color for Jammu
-  kashmir: "#165DC9", // Color for Kashmir
+  jammu: "#FF847C",
+  kashmir: "#165DC9",
   jharkhand: "#CD7ED9",
   karnataka: "#CD7ED9",
   kerala: "#43E7C9",
@@ -40,8 +39,8 @@ const IndiaMap = () => {
     <ComposableMap
       projection='geoMercator'
       projectionConfig={{
-        scale: 1000, // Control zoom level
-        center: [78.9629, 22.5937], // Center the map over India
+        scale: 1000,
+        center: [78.9629, 22.5937],
       }}
       width={700}
       height={800}
@@ -50,18 +49,14 @@ const IndiaMap = () => {
       <Geographies geography={INDIA_TOPO_JSON}>
         {({ geographies }) =>
           geographies.map((geo) => {
-            // Normalize state name: remove spaces, replace "&" with "and", convert to lowercase
-            let stateName = geo.properties.ST_NM.replace(/\s+/g, "") // Remove all spaces
-              .replace(/&/g, "and") // Replace & with "and"
-              .toLowerCase(); // Convert to lowercase
+            let stateName = geo.properties.ST_NM.replace(/\s+/g, "").replace(/&/g, "and").toLowerCase();
 
-            // Special case: If the state is "Jammu & Kashmir", color Jammu and Kashmir differently
             if (stateName === "jammuandkashmir") {
               const isJammu = geo.properties.ST_NM.includes("Jammu");
               stateName = isJammu ? "jammu" : "kashmir";
             }
 
-            const fillColor = stateToSectorColorMap[stateName] || "#D6D6DA"; // Default color if not mapped
+            const fillColor = stateToSectorColorMap[stateName] || "#D6D6DA";
             return (
               <Geography
                 key={geo.rsmKey}

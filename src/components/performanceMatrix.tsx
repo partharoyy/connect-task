@@ -17,9 +17,8 @@ import ServiceProvidersRightGraph from "./serviceProvidersRightGraph";
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, Title);
 
 const PerformanceMatrix: React.FC = () => {
-  // Radial Bar Chart for Performance Metrics using ApexCharts
   const radialBarData = {
-    series: [75, 70, 85], // These represent the percentage values for each metric
+    series: [75, 70, 85],
     options: {
       chart: {
         type: "radialBar",
@@ -28,13 +27,13 @@ const PerformanceMatrix: React.FC = () => {
         radialBar: {
           size: 200,
           track: {
-            background: "transparent", // Removes unfilled color part
+            background: "transparent",
           },
           dataLabels: {
             name: {
               fontSize: "16px",
               offsetY: -25,
-              show: true, // Aligns the text labels near the origin
+              show: true,
               color: "#000",
             },
             value: {
@@ -42,32 +41,31 @@ const PerformanceMatrix: React.FC = () => {
               formatter: function (val: number) {
                 return `${val}%`;
               },
-              offsetY: 10, // Adjust position if needed
+              offsetY: 10,
               show: true,
               color: "#000",
             },
             total: {
-              show: false, // Hide the total percentage in the center
+              show: false,
             },
           },
           hollow: {
-            background: "transparent", // Removes unfilled area
+            background: "transparent",
           },
-          rounded: true, // Makes the bars rounded at the ends
+          rounded: true,
           stroke: {
-            lineCap: "round", // Makes the edges smooth
+            lineCap: "round",
             width: 15,
           },
         },
       },
       labels: ["Performance Metrics", "Feedback Summary", "Rating Trends"],
-      colors: ["#039F00", "#EB8C00", "#ADD633"], // Colors for each metric
-    } as ApexOptions, // Explicitly cast the object to ApexOptions type
+      colors: ["#039F00", "#EB8C00", "#ADD633"],
+    } as ApexOptions,
   };
 
   return (
     <div className='mt-4 grid grid-cols-1 lg:grid-cols-[363px_1fr] gap-4 container'>
-      {/* Radial Bar Chart for Performance Metrics */}
       <div className='bg-white p-6 rounded-xl flex-none relative'>
         <h2 className='text-xl font-semibold mb-4'>Performance Metrics & Feedback</h2>
         <div className='absolute w-full text-right top-20 right-[11.5rem]'>
@@ -103,8 +101,6 @@ const PerformanceMatrix: React.FC = () => {
           </ul>
         </div>
       </div>
-
-      {/* Elliptical Donut Chart for Service Providers */}
       <ServiceProvidersRightGraph />
     </div>
   );

@@ -1,4 +1,3 @@
-//@ts-expect-ignore
 import React from "react";
 import { Line } from "react-chartjs-2";
 import {
@@ -97,6 +96,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
           pointStyle: "circle",
           padding: 20,
           color: "#0D0D0D",
+          //@ts-expect-error: TypeScript does not recognize the generateLabels method on the legend plugin
           generateLabels: (chart: ChartJS) => {
             return chart.data.datasets.map((dataset, index) => ({
               text: dataset.label,
@@ -112,35 +112,37 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
       },
       tooltip: {
         callbacks: {
+          //@ts-expect-error: task project
           label: (context: { dataset: { label: string }; raw: number }) => `${context.dataset.label}: ${context.raw}`,
         },
       },
     },
+    //@ts-expect-error: task project
     scales: {
       y: {
         beginAtZero: false,
         ticks: {
           color: "#0D0D0D",
           callback: function (value: number) {
-            return value.toString(); // Display y-axis labels without thousands separator
+            return value.toString();
           },
           stepSize: 1000,
           font: {
             family: "Arial",
             size: 11,
             weight: "500",
-          }, // Ensure the spacing between ticks is consistent
+          },
         },
-        min: 1000, // Minimum value for y-axis
+        min: 1000,
         max: 5000,
         grid: {
           display: false,
         },
-        offset: true, // Maximum value for y-axis
+        offset: true,
       },
       x: {
         grid: {
-          display: false, // Hide x-axis grid lines
+          display: false,
         },
         ticks: {
           color: "#0D0D0D",
@@ -153,15 +155,12 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
         offset: true,
       },
     } as ChartOptions<"line">,
-
-    // Adding `as any` to bypass TypeScript errors
   };
 
   return (
     <div className='p-7 bg-white shadow-lg rounded-xl mt-4'>
       <div className='relative'>
         <Line data={chartData} options={options} />
-        {/* Custom legend positioned below the chart */}
         <div className='mt-10'>
           <div className='flex flex-wrap gap-4'>
             {chartData.datasets.map((dataset, index) => (

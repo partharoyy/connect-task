@@ -24,11 +24,11 @@ const TopServiceProvidersCard: React.FC<TopServiceProvidersCardProps> = ({
         alt='Poster image'
         className='rounded-t-[8px] rounded-b-none w-[170.5px] h-[206px] object-cover'
       />
-      <p className='text-left w-full'>{label}</p> {/* Make label take full width */}
+      <p className='text-left w-full'>{label}</p>
       <div className='flex justify-between w-full items-center mt-2'>
         <div className='flex items-center'>
           {userList.slice(0, 3).map((user, index) => {
-            const borderColors = ["#FF847C", "#CD7ED9", "#43E7C9"]; // The border colors
+            const borderColors = ["#FF847C", "#CD7ED9", "#43E7C9"];
             return (
               <img
                 key={user.id}
@@ -36,9 +36,9 @@ const TopServiceProvidersCard: React.FC<TopServiceProvidersCardProps> = ({
                 alt={user.name}
                 className='w-[26px] h-[26px] rounded-full border-2 object-cover'
                 style={{
-                  borderColor: borderColors[index], // Apply border colors in normal order
-                  marginLeft: index === 0 ? "0" : "-13px", // Ensure all images overlap
-                  zIndex: 0 + index, // Ensure correct stacking order
+                  borderColor: borderColors[index],
+                  marginLeft: index === 0 ? "0" : "-13px",
+                  zIndex: 0 + index,
                 }}
               />
             );

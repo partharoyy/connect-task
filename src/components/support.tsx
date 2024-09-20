@@ -50,6 +50,4 @@ export default function Support() {
       </div>
     </div>
   );
-  // Updated styles to allow growth with content
-  // Added 'flex-grow' to the main container
 }
