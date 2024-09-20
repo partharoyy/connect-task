@@ -11,7 +11,7 @@ const Filters = () => {
   const handleSelect = () => {};
 
   return (
-    <div className='flex items-center justify-between w-[1300px]'>
+    <div className='flex items-center justify-between w-full span-full'>
       <div className='flex gap-2 items-center'>
         <Dropdown
           label='This Year'

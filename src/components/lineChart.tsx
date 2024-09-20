@@ -33,7 +33,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
         data: data.activeServiceProvider,
         borderColor: "#FF5D8D",
         borderWidth: 2,
-        fill: true,
+        fill: false,
         pointRadius: 0,
       },
       {
@@ -42,7 +42,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
         borderColor: "#72BBFF",
         backgroundColor: "rgba(135, 206, 250, 0.3)",
         borderWidth: 2,
-        fill: true,
+        fill: false,
         pointRadius: 0,
       },
       {
@@ -51,7 +51,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
         borderColor: "#11BEA9",
         backgroundColor: "rgba(0, 255, 0, 0.3)",
         borderWidth: 2,
-        fill: true,
+        fill: false,
         pointRadius: 0,
       },
       {
@@ -60,7 +60,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
         borderColor: "#FF834D",
         backgroundColor: "rgba(255, 165, 0, 0.3)",
         borderWidth: 2,
-        fill: true,
+        fill: false,
         pointRadius: 0,
       },
       {
@@ -69,7 +69,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
         borderColor: "#FA18FF",
         backgroundColor: "rgba(255, 192, 203, 0.3)",
         borderWidth: 2,
-        fill: true,
+        fill: false,
         pointRadius: 0,
       },
       {
@@ -78,7 +78,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
         borderColor: "#FBBC05",
         backgroundColor: "rgba(255, 215, 0, 0.3)",
         borderWidth: 2,
-        fill: true,
+        fill: false,
         pointRadius: 0,
       },
     ],

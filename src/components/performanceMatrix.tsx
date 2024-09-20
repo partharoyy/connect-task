@@ -19,7 +19,7 @@ ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointE
 const PerformanceMatrix: React.FC = () => {
   // Radial Bar Chart for Performance Metrics using ApexCharts
   const radialBarData = {
-    series: [70, 88, 59], // These represent the percentage values for each metric
+    series: [75, 70, 85], // These represent the percentage values for each metric
     options: {
       chart: {
         type: "radialBar",
@@ -54,6 +54,10 @@ const PerformanceMatrix: React.FC = () => {
             background: "transparent", // Removes unfilled area
           },
           rounded: true, // Makes the bars rounded at the ends
+          stroke: {
+            lineCap: "round", // Makes the edges smooth
+            width: 15,
+          },
         },
       },
       labels: ["Performance Metrics", "Feedback Summary", "Rating Trends"],
@@ -68,7 +72,7 @@ const PerformanceMatrix: React.FC = () => {
         <h2 className='text-xl font-semibold mb-4'>Performance Metrics & Feedback</h2>
         <div className='absolute w-full text-right top-20 right-[11.5rem]'>
           <ul>
-            {radialBarData.options.labels.map((label, index) => (
+            {radialBarData.options.labels?.map((label, index) => (
               <li key={index} className='text-[#737373] font-medium text-[12px]'>
                 {label} <span className='text-black'>{radialBarData.series[index]}%</span>
               </li>
@@ -76,7 +80,7 @@ const PerformanceMatrix: React.FC = () => {
           </ul>
         </div>
         <div className='flex items-center justify-center'>
-          <ReactApexChart options={radialBarData.options} series={radialBarData.series} type='radialBar' height={350} />
+          <ReactApexChart options={radialBarData.options} series={radialBarData.series} type='radialBar' height={450} />
         </div>
 
         <div className='mt-10'>

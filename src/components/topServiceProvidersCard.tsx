@@ -19,7 +19,11 @@ const TopServiceProvidersCard: React.FC<TopServiceProvidersCardProps> = ({
 }) => {
   return (
     <div className='flex flex-col items-center border border-[#CCCCCC] rounded-lg p-3 space-y-3'>
-      <img src={posterImage} alt='Poster image' className='rounded-t-[8px] rounded-b-none w-[170.5px] h-[206px]' />
+      <img
+        src={posterImage}
+        alt='Poster image'
+        className='rounded-t-[8px] rounded-b-none w-[170.5px] h-[206px] object-cover'
+      />
       <p className='text-left w-full'>{label}</p> {/* Make label take full width */}
       <div className='flex justify-between w-full items-center mt-2'>
         <div className='flex items-center'>
@@ -40,7 +44,9 @@ const TopServiceProvidersCard: React.FC<TopServiceProvidersCardProps> = ({
             );
           })}
 
-          {userList.length > 3 && <span className='text-[8px] font-semibold text-black'>+{userList.length - 3}</span>}
+          {userList.length > 3 && (
+            <span className='text-[8px] font-semibold text-black ml-1'>+{userList.length - 3}</span>
+          )}
         </div>
 
         <p className='bg-[#E6F8EF] rounded-lg text-[#18CE98] font-medium text-[12px] py-1 px-2'>

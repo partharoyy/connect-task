@@ -32,25 +32,25 @@ const donutData = {
   ],
 };
 
-// Line Graph Data with two smooth lines, no points shown
+// Line Graph Data with two smooth lines, now with point markers
 const lineData = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], // Month labels
   datasets: [
     {
       label: "Service Trend 1",
-      data: [200, 220, 210, 230, 240, 235, 245],
-      borderColor: "#4bc0c0",
+      data: [10, 22, 30, 40, 20, 50, 30, 20, 40, 70, 60, 80], // Example values for 12 months
+      borderColor: "#FFE603",
       fill: false,
       tension: 0.4, // Smooth lines
-      pointRadius: 0, // Hides data points
+      pointRadius: 0, // Set data point markers
     },
     {
       label: "Service Trend 2",
-      data: [150, 170, 180, 200, 190, 210, 220],
-      borderColor: "#FF6384",
+      data: [20, 40, 50, 60, 30, 20, 30, 40, 50, 70, 60, 100], // Example values for 12 months
+      borderColor: "#3FE900",
       fill: false,
       tension: 0.4, // Smooth lines
-      pointRadius: 0, // Hides data points
+      pointRadius: 0, // Set data point markers
     },
   ],
 };
@@ -62,30 +62,31 @@ const legends: LegendItem[] = [
   { label: "Services removed", color: "#FF0000" },
 ];
 
-// Line Chart Options
 const lineOptions = {
   scales: {
     x: {
+      type: "category", // Ensure x-axis type is category
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], // Ensure labels are set
       grid: {
         display: false, // No grid lines on x-axis
       },
       ticks: {
-        // Markers for each x-axis point
-        callback: function (value: any, index: any, values: any) {
-          return index % 1 === 0 ? value : ""; // Show markers for every axis point
-        },
+        autoSkip: false, // Prevent auto-skipping of ticks
+        beginAtZero: false,
       },
+      offset: true,
     },
     y: {
       grid: {
         display: false, // No grid lines on y-axis
       },
       ticks: {
-        // Markers for each y-axis point
         callback: function (value: any, index: any, values: any) {
           return index % 1 === 0 ? value : ""; // Show markers for every axis point
         },
+        beginAtZero: false,
       },
+      offset: true,
     },
   },
   plugins: {
@@ -97,16 +98,23 @@ const lineOptions = {
 
 export default function ServiceOfferings() {
   return (
-    <div className='p-6 mt-4 rounded-xl bg-white'>
-      <div className='flex flex-wrap md:flex-nowrap justify-between items-start'>
+    <div className='p-6 mt-4 rounded-xl bg-white '>
+      <p className='text-[#0D0D0D] text-[20px] font-bold mb-4'>Service offerings</p>
+      <div className='flex flex-wrap md:flex-nowrap justify-between items-start h-[400px]'>
         {/* Donut Chart - 30% width */}
-        <div className='w-full md:w-1/3 p-4'>
+        <div className='w-full md:w-[30%] p-4'>
           <Doughnut data={donutData} options={{ plugins: { legend: { display: false } } }} />
         </div>
 
         {/* Line Graph - 70% width */}
-        <div className='w-full md:w-2/3 p-4'>
-          <Line data={lineData} options={lineOptions} />
+        <div className='w-full p-2 h-[400px]'>
+          {" "}
+          {/* Set a fixed height for the parent */}
+          <div className='w-full h-full'>
+            {" "}
+            {/* Ensure the child takes full width and height */}
+            <Line data={lineData} options={lineOptions} />
+          </div>
         </div>
       </div>
 

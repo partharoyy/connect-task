@@ -18,3 +18,17 @@ export interface DropdownProps {
   startIcon?: ReactNode;
   endIcon?: ReactNode;
 }
+
+export interface SectionData {
+  title: string;
+  cards: {
+    id: string;
+    name: string;
+    avatarUrl: string;
+    tags: string[];
+    status: string;
+    statusType: "escalated" | "pending" | "open" | "resolved";
+    title?: string;
+    description?: string;
+  }[];
+}

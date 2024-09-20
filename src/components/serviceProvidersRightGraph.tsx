@@ -1,4 +1,4 @@
-import { Doughnut, Line, Bar } from "react-chartjs-2";
+import { Doughnut, Bar } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title } from "chart.js";
 
 // Register necessary components for Chart.js
@@ -31,6 +31,7 @@ const ServiceProvidersRightGraph: React.FC = () => {
         display: false, // This will hide the legends
       },
     },
+    cutout: "50%",
   };
 
   const horizontalBarData = {
@@ -41,14 +42,14 @@ const ServiceProvidersRightGraph: React.FC = () => {
         data: [600, 300, 650, 500, 400, 600, 300], // Actual progress data
         backgroundColor: ["#FF847C", "#165DC9", "#CD7ED9", "#43E7C9", "#F3A712", "#722391", "#FF847C"],
         borderRadius: 10, // Rounded edges for bars
-        barThickness: 15, // Slimmer bars
+        barThickness: 6, // Slimmer bars
       },
       {
         label: "Track",
         data: [700, 700, 700, 700, 700, 700, 700], // Max values for the track
-        backgroundColor: "#E0E0E0", // Bar track color (background for unfilled portions)
-        barThickness: 15, // Same thickness as progress bars
-        borderRadius: 10, // Rounded edges for track bars
+        backgroundColor: "#CEE0EC", // Bar track color (background for unfilled portions)
+        barThickness: 5, // Same thickness as progress bars
+        borderRadius: 6, // Rounded edges for track bars
       },
     ],
   };
@@ -58,23 +59,35 @@ const ServiceProvidersRightGraph: React.FC = () => {
     scales: {
       x: {
         beginAtZero: true,
-        min: 100, // Start from 100
-        max: 700, // Max is 700
+        min: 0, // Start from 0
+        max: 700, // Set max value for x-axis
         ticks: {
-          stepSize: 100, // Show 100 through 700
+          stepSize: 100, // Show 0 through 1000
           callback: function (value) {
-            return value; // Display 100, 200, ..., 700
+            return value; // Display 0, 100, ..., 1000
           },
         },
         grid: {
           display: false, // Remove grid lines for x-axis
         },
+        offset: true,
+        border: {
+          display: false, // Remove the main x-axis line
+        },
       },
       y: {
+        type: "category", // Ensure y-axis is treated as a category
+        labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], // Set labels for y-axis
         grid: {
           display: false, // Remove grid lines for y-axis
         },
+        barPercentage: 0.5,
+        categoryPercentage: 0.5,
         stacked: true, // Stack the bars to create the bar tracks
+        offset: true,
+        border: {
+          display: false, // Remove the main x-axis line
+        },
       },
     },
     plugins: {

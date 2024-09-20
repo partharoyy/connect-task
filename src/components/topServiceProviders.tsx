@@ -19,7 +19,7 @@ interface TopServiceProvidersProps {
 const TopServiceProviders: React.FC<TopServiceProvidersProps> = ({ data }) => {
   return (
     <div className='flex flex-col space-y-4  bg-white rounded-xl  p-8 mt-3 mx-auto'>
-      <p className='text-[28px] font-bold text-[#0D0D0D] '>Top Service Providers</p>
+      <p className='text-[20px] font-bold text-[#0D0D0D] '>Top Service Providers</p>
       <div className='flex justify-center items-center gap-4'>
         {data.map((data, index) => (
           <TopServiceProvidersCard

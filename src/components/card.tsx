@@ -40,7 +40,7 @@ const Card: React.FC<CardProps> = ({
   bottomGraph,
 }) => {
   return (
-    <div className='w-[279.33px] h-[188.53px] rounded-[16px] p-6 gap-4 bg-white'>
+    <div className='w-full min-w-[279.33px] h-auto rounded-[16px] p-6 gap-4 bg-white'>
       {/* Top Section */}
       <div className='flex items-center gap-3 mb-4 w-[231.33px] h-[60px]'>
         <IconWithBackground Icon={Icon} bgColor={iconBGColor} iconColor='#000435' />
@@ -114,7 +114,7 @@ const Card: React.FC<CardProps> = ({
               </div>
             </div>
 
-            <div className='ml-auto text-center'>
+            <div className='flex flex-col items-start mr-1'>
               <button className='text-[10px] font-medium text-[#4318FF] hover:underline'>View all</button>
               <p className='text-[10px] font-medium text-gray-400'>{time}</p>
             </div>

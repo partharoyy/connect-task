@@ -9,25 +9,30 @@ import { topServiceProvidersData } from "../public/data/topServiceData.ts";
 import { chartData } from "../public/data/topServiceData.ts";
 import PerformanceMatrix from "./components/performanceMatrix.tsx";
 import ServiceOfferings from "./components/serviceOfferings.tsx";
+import Support from "./components/support.tsx";
 
 const App = () => {
   return (
-    <div className='flex bg-white text-black rounded-xl mt-4'>
+    <div className='flex flex-col md:flex-row bg-white text-black rounded-xl mt-4'>
       <LeftNavigation />
       <div className='flex flex-col flex-grow'>
         <TopNavigation />
-        <main className='flex-grow bg-[#E6E6FA] p-10'>
-          <div className='container mx-auto  flex flex-wrap gap-6 mt-6'>
+        <main className='flex-grow bg-[#E6E6FA] p-4 md:p-10'>
+          <div className='container mx-auto flex flex-col md:flex-row flex-wrap gap-6 mt-6'>
             <Filters />
-            <div className='child w-[870px] min-w-[870px]'>
-              <CardContainer />
-              <LineChart data={chartData} />
-              <Segmentation />
-              <TopServiceProviders data={topServiceProvidersData} />
-              <ServiceOfferings />
-              <PerformanceMatrix />
+            <div className='flex flex-col md:flex-row flex-grow gap-6'>
+              <div className='flex-grow min-w-[300px] md:min-w-[700px]'>
+                <CardContainer />
+                <LineChart data={chartData} />
+                <Segmentation />
+                <TopServiceProviders data={topServiceProvidersData} />
+                <ServiceOfferings />
+                <PerformanceMatrix />
+              </div>
+              <div className='p-4  bg-white rounded-xl h-[2366px]'>
+                <Support />
+              </div>
             </div>
-            <div className='child p-4 w-[390px] min-w-[390px] bg-white rounded-xl'></div>
           </div>
         </main>
       </div>
