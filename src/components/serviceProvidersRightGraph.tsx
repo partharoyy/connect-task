@@ -63,7 +63,7 @@ const ServiceProvidersRightGraph: React.FC = () => {
         max: 700, // Set max value for x-axis
         ticks: {
           stepSize: 100, // Show 0 through 1000
-          callback: function (value) {
+          callback: function (value: number | string) {
             return value; // Display 0, 100, ..., 1000
           },
         },
@@ -96,7 +96,7 @@ const ServiceProvidersRightGraph: React.FC = () => {
       },
       tooltip: {
         callbacks: {
-          label: function (context) {
+          label: function (context: { dataset: { label: string }; raw: number }) {
             return context.dataset.label + ": " + context.raw;
           },
         },

@@ -1,4 +1,3 @@
-import React from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import INDIA_TOPO_JSON from "../../public/data/india_states.json";
 

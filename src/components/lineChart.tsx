@@ -1,7 +1,9 @@
+//@ts-expect-ignore
 import React from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
+  ChartOptions,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -84,7 +86,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
     ],
   };
 
-  const options = {
+  const options: ChartOptions<"line"> = {
     responsive: true,
     plugins: {
       legend: {
@@ -95,13 +97,14 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
           pointStyle: "circle",
           padding: 20,
           color: "#0D0D0D",
-          generateLabels: (chart) => {
+          generateLabels: (chart: ChartJS) => {
             return chart.data.datasets.map((dataset, index) => ({
               text: dataset.label,
               fillStyle: dataset.borderColor,
               strokeStyle: dataset.borderColor,
               lineWidth: 1,
               hidden: dataset.hidden,
+              addColorStop: false,
               index,
             }));
           },
@@ -109,7 +112,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
       },
       tooltip: {
         callbacks: {
-          label: (context: any) => `${context.dataset.label}: ${context.raw}`,
+          label: (context: { dataset: { label: string }; raw: number }) => `${context.dataset.label}: ${context.raw}`,
         },
       },
     },
@@ -149,7 +152,7 @@ const LineChart: React.FC<LineChartProps> = ({ data }) => {
         },
         offset: true,
       },
-    } as any,
+    } as ChartOptions<"line">,
 
     // Adding `as any` to bypass TypeScript errors
   };

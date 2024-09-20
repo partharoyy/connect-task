@@ -2,7 +2,6 @@ import React from "react";
 import { Pie } from "react-chartjs-2";
 import "chart.js/auto";
 import IndiaMap from "./indiaMap";
-import { CgColorBucket } from "react-icons/cg";
 
 const Segmentation: React.FC = () => {
   const data = {

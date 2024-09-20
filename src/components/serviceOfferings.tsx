@@ -1,7 +1,7 @@
-import React from "react";
 import { Doughnut, Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
+  ChartOptions,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -62,7 +62,7 @@ const legends: LegendItem[] = [
   { label: "Services removed", color: "#FF0000" },
 ];
 
-const lineOptions = {
+const lineOptions: ChartOptions<"line"> = {
   scales: {
     x: {
       type: "category", // Ensure x-axis type is category
@@ -81,7 +81,7 @@ const lineOptions = {
         display: false, // No grid lines on y-axis
       },
       ticks: {
-        callback: function (value: any, index: any, values: any) {
+        callback: function (value: number | string, index: number) {
           return index % 1 === 0 ? value : ""; // Show markers for every axis point
         },
         beginAtZero: false,
